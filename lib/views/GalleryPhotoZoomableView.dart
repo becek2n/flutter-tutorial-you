@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/components/GalleryPhotoWrapper.dart';
 import 'package:tutorial_flutter/components/GalleryThumbnail.dart';
 import 'package:tutorial_flutter/models/GalleryItemModel.dart';
-
 class GalleryPhotoZoomableView extends StatefulWidget {
   GalleryPhotoZoomableView({Key key}) : super(key: key);
 
@@ -122,13 +121,12 @@ class _GalleryPhotoZoomableViewState extends State<GalleryPhotoZoomableView> {
                 ),
               ),
             )
-          )
-
+          ),
          ],
        ),
     );
   }
-
+ 
   void _open(BuildContext context, final int index){
     Navigator.push(context, 
       MaterialPageRoute(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 
 void main() {
