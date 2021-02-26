@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
+import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
             // closer together (more dense) than on mobile platforms.
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: GalleryPhotoZoomableView(),
+          home: UploadPhotoLocalStorage(),
         );
         return materialApp;
   }
