@@ -16,7 +16,10 @@ class GalleryItemThumbnail extends StatelessWidget {
         onTap: onTap,
         child: Hero(
           tag: galleryItemModel.id,
-          child: Image.asset(galleryItemModel.resource, height: 300.0, width: 800.0, fit: BoxFit.fill,)
+          child: (galleryItemModel.assetType == "url") ? 
+            Image.network(galleryItemModel.resource, height: 300.0, width: 800.0, fit: BoxFit.fill,)
+            :
+            Image.asset(galleryItemModel.resource, height: 300.0, width: 800.0, fit: BoxFit.fill,)
         ),
       ),
     );

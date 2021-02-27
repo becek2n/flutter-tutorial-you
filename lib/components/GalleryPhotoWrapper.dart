@@ -102,7 +102,7 @@ class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper>{
         heroAttributes: PhotoViewHeroAttributes(tag: item.id)
       )
     : PhotoViewGalleryPageOptions(
-      imageProvider: AssetImage(item.resource),
+      imageProvider: (item.assetType == "url") ? NetworkImage(item.resource) : AssetImage(item.resource),
       initialScale: PhotoViewComputedScale.contained,
       minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
       maxScale: PhotoViewComputedScale.contained * 1.1,
