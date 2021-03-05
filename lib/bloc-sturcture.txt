@@ -1,0 +1,19 @@
+Bloc structure project
+
+bloc
+    ProductBloc.dart
+components
+    CircularLoading.dart
+    ProductComponent.dart
+models
+    ProductModel.dart
+    ResultModel.dart
+repositories
+    ProductRepository.dart
+services
+    ApiService.dart 
+views
+    BlocProductView.dart
+    ProductDetailView.dart
+
+
