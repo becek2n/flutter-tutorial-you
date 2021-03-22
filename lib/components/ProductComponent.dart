@@ -84,7 +84,7 @@ class ProductComponent extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     image: new DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: new NetworkImage(productModel[index].thumbnail.replaceAll("http://localhost/", baseAPI)),
+                                      image: new NetworkImage(productModel[index].thumbnail.replaceAll("localhost:3001", baseAPIEcommerce)),
                                     ),
                                     borderRadius: BorderRadius.all(Radius.circular(5)),
                                   ),

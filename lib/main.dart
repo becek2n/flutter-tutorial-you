@@ -3,8 +3,8 @@ import 'package:tutorial_flutter/models/MenuModel.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 import 'package:tutorial_flutter/views/BlocProductView.dart';
+import 'package:tutorial_flutter/views/TrackingView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: "Tutorial Flutter",),
+       home: MyHomePage(title: "Tutorial Flutter",),
     );
     return materialApp;
   }
@@ -34,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<MenuModel> menuModel = new List<MenuModel>();
+  List<MenuModel> menuModel = [];
   @override
   void initState() { 
     super.initState();
@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MenuModel(name: "Image Zoomable", view: GalleryPhotoZoomableView(), icon: Icon(Icons.image_search, size: 70)),
       MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: 70)),
       MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+      MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
     });
     
   }

@@ -15,7 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         yield LoadingProduct();
         await Future.delayed(const Duration(seconds: 2));
         
-        final data = await APIWeb().load(ProductRepository.load('product/category/' + event.name));
+        final data = await APIWeb().load(ProductRepository.load('/product/category/' + event.name));
 
         yield ProductState(products: data);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:tutorial_flutter/models/GalleryItemModel.dart';
@@ -85,23 +85,7 @@ class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper>{
 
   PhotoViewGalleryPageOptions _buildItem(BuildContext context, int index){
     final GalleryItemModel item = widget.galleries[index];
-    return item.isSVG ? 
-      PhotoViewGalleryPageOptions.customChild(
-        child: Container(
-          width: 300,
-          height: 300,
-          child: SvgPicture.asset(
-            item.resource,
-            height: 200.0,
-          ),
-        ),
-        childSize: const Size(300, 300),
-        initialScale: PhotoViewComputedScale.contained,
-        minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
-        maxScale: PhotoViewComputedScale.contained * 1.1,
-        heroAttributes: PhotoViewHeroAttributes(tag: item.id)
-      )
-    : PhotoViewGalleryPageOptions(
+    return PhotoViewGalleryPageOptions(
       imageProvider: (item.assetType == "url") ? NetworkImage(item.resource) : AssetImage(item.resource),
       initialScale: PhotoViewComputedScale.contained,
       minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),

@@ -1,5 +1,5 @@
 class ResultModel{
-  final int responsecode;
+  final String responsecode;
   final String responsemessage;
   final dynamic responsedata;
 
@@ -9,7 +9,7 @@ class ResultModel{
   factory ResultModel.fromJSON(Map<String, dynamic> jsonMap){
     var list = jsonMap["responseData"] as dynamic;
     final data = ResultModel(
-      responsecode: jsonMap["responseCode"],
+      responsecode: jsonMap["responseCode"].toString(),
       responsemessage: jsonMap["responseMessage"],
       responsedata: list
     );
