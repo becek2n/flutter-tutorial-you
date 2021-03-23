@@ -4,7 +4,7 @@ import 'package:tutorial_flutter/components/GalleryPhotoWrapper.dart';
 import 'package:tutorial_flutter/components/GalleryThumbnail.dart';
 import 'package:tutorial_flutter/models/GalleryItemModel.dart';
 class GalleryPhotoZoomableView extends StatefulWidget {
-  GalleryPhotoZoomableView({Key key}) : super(key: key);
+  GalleryPhotoZoomableView({Key? key}) : super(key: key);
 
   @override
   _GalleryPhotoZoomableViewState createState() => _GalleryPhotoZoomableViewState();

@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -26,12 +26,12 @@ dependencies:
   #flutter_svg: ^0.18.0
   photo_view: ^0.11.1
   carousel_slider: ^4.0.0-nullsafety.0
-  flutter_absolute_path: any
   multi_image_picker: ^4.8.0
   path_provider: ^2.0.1
 
   flutter_bloc: ^7.0.0
   http: ^0.13.1
+  flutter_absolute_path: any
   timelines: ^0.0.2+1
 
 

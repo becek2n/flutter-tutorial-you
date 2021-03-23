@@ -4,7 +4,7 @@ import 'package:tutorial_flutter/bloc/ProductBloc.dart';
 import 'package:tutorial_flutter/components/ProductComponent.dart';
 
 class BlocProductView extends StatefulWidget {
-  BlocProductView({Key key}) : super(key: key);
+  BlocProductView({Key? key}) : super(key: key);
 
   @override
   _BlocProductViewState createState() => _BlocProductViewState();

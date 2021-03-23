@@ -3,6 +3,7 @@ import 'package:tutorial_flutter/models/MenuModel.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 import 'package:tutorial_flutter/views/BlocProductView.dart';
+import 'package:tutorial_flutter/views/ProfileView.dart';
 import 'package:tutorial_flutter/views/TrackingView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 void main() {
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -41,9 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
     menuModel.addAll({
       MenuModel(name: "Checkbox Group", view: CheckboxGroupView(), icon: Icon(Icons.check_box_outlined, size: 70,)),
       MenuModel(name: "Image Zoomable", view: GalleryPhotoZoomableView(), icon: Icon(Icons.image_search, size: 70)),
-      MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: 70)),
+      // MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: 70)),
       MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
       MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+      MenuModel(name: "BLOC Profile Update", view: ProfileView(), icon: Icon(Icons.person, size: 70)),
     });
     
   }
@@ -53,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text(widget.title, style: TextStyle(fontSize: 30),)
+          child: Text(widget.title!, style: TextStyle(fontSize: 30),)
         ),
         backgroundColor: Colors.redAccent,
         elevation: 0.0,
@@ -74,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     return InkWell(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context) => 
-                            menuModel[index].view 
+                            menuModel[index].view! 
                           )
                         );
                       },
@@ -114,9 +116,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Divider(thickness: 3,),
                                       SizedBox(height: 10,),
-                                      menuModel[index].icon,
+                                      menuModel[index].icon!,
                                       SizedBox(height: 20,),
-                                      Text(menuModel[index].name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                                      Text(menuModel[index].name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
                                     ],
                                   ) 
                                 ),

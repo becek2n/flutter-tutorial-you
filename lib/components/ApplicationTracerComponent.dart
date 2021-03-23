@@ -7,13 +7,16 @@ import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
 import 'package:tutorial_flutter/components/ApplcationTracerHistoryComponent.dart';
 
 class ApplicationTracerComponent extends StatelessWidget {
-  const ApplicationTracerComponent({Key key}) : super(key: key);
+  const ApplicationTracerComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ApplicationTracerBloc, ApplicationTracerState>(
       listener: (BuildContext context, ApplicationTracerState state){
-        if(state is LoadingTracer){
+        
+      },
+        builder: (context, state){
+          if(state is LoadingTracer){
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,8 +33,6 @@ class ApplicationTracerComponent extends StatelessWidget {
               ]
           );
         }
-      },
-        builder: (context, state){
           if(state is ApplicationTracerState){
             if(state.application == null){
               return Column(
@@ -40,7 +41,7 @@ class ApplicationTracerComponent extends StatelessWidget {
                 ]
               ); 
             }else{
-              ApplicationTracerModel application = state.application;
+              ApplicationTracerModel application = state.application!;
               return ListView(
                 children: [
                   Column(
@@ -72,8 +73,8 @@ class ApplicationTracerComponent extends StatelessWidget {
                                 DetailItem(title: "Tgl Input Aplikasi", value: application.aplksCreateOn == null ? "" : application.aplksCreateOn.toString()),
                                 DetailItem(title: "Tgl Input Premi", value: application.aplksCreateOn == null ? "" : application.aplksCreateOn.toString()),
                                 DetailItem(title: "Tgl Verifikasi Aplikasi", value: application.aplksVrfyOn == null ? "" : application.aplksVrfyOn.toString()),
-                                DetailItem(title: "Tgl Underwriting", value: application.underwriting == null ? "" : application.underwriting.createOn.toString()),
-                                DetailItem(title: "Catatan Underwriting", value: application.underwriting == null ? "" : application.underwriting.risknoteNote.toString()),
+                                DetailItem(title: "Tgl Underwriting", value: application.underwriting == null ? "" : application.underwriting!.createOn.toString()),
+                                DetailItem(title: "Catatan Underwriting", value: application.underwriting == null ? "" : application.underwriting!.risknoteNote.toString()),
 
                               ],
                             ),
@@ -87,7 +88,7 @@ class ApplicationTracerComponent extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                ApplicationTracerHistoryComponent(monitorings: application.monitoring),
+                                ApplicationTracerHistoryComponent(monitorings: application.monitoring!),
                               ],
                             ),
                           ),
@@ -112,9 +113,9 @@ class ApplicationTracerComponent extends StatelessWidget {
 
 
 class LableInfo extends StatelessWidget {
-  final String header;
-  final String name;
-  const LableInfo({Key key, this.header, this.name}) : super(key: key);
+  final String? header;
+  final String? name;
+  const LableInfo({Key? key, this.header, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +123,12 @@ class LableInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(header, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(header!, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Padding(
             padding: EdgeInsets.all(10),
             child: Container(
               child: Text(
-                name
+                name!
               ),
             ),
           ),

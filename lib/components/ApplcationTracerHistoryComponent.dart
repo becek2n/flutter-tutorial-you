@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:timelines/timelines.dart';
 import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
 
 class ApplicationTracerHistoryComponent extends StatelessWidget {
-  final List<InfoMonitoringModel> monitorings; 
-  const ApplicationTracerHistoryComponent({Key key, this.monitorings}) : super(key: 
+  final List<InfoMonitoringModel>? monitorings; 
+  const ApplicationTracerHistoryComponent({Key? key, this.monitorings}) : super(key: 
   key);
 
   @override
   Widget build(BuildContext context) {
-    final data = _data(monitorings);
+    final data = _data(monitorings!);
     return Container(
       child: Column(
         children: [
@@ -35,7 +36,7 @@ class ApplicationTracerHistoryComponent extends StatelessWidget {
 }
 class _InnerTimeline extends StatelessWidget {
   const _InnerTimeline({
-    @required this.messages,
+    required this.messages,
   });
 
   final List<_DeliveryMessage> messages;
@@ -85,7 +86,7 @@ class _InnerTimeline extends StatelessWidget {
 }
 
 class _DeliveryProcesses extends StatelessWidget {
-  const _DeliveryProcesses({Key key, @required this.processes})
+  const _DeliveryProcesses({Key? key, required this.processes})
       : assert(processes != null),
         super(key: key);
 
@@ -242,10 +243,10 @@ _OrderInfo _data(List<InfoMonitoringModel> _monitorings) {
 
 class _OrderInfo {
   const _OrderInfo({
-    @required this.id,
-    @required this.date,
-    @required this.driverInfo,
-    @required this.deliveryProcesses,
+    required this.id,
+    required this.date,
+    required this.driverInfo,
+    required this.deliveryProcesses,
   });
 
   final int id;
@@ -256,12 +257,12 @@ class _OrderInfo {
 
 class _DriverInfo {
   const _DriverInfo({
-    @required this.name,
+    required this.name,
     this.thumbnailUrl,
   });
 
   final String name;
-  final String thumbnailUrl;
+  final String? thumbnailUrl;
 }
 
 class _DeliveryProcess {

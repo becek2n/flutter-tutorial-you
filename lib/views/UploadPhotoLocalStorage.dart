@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_absolute_path/flutter_absolute_path.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 class UploadPhotoLocalStorage extends StatefulWidget {
-  UploadPhotoLocalStorage({Key key}) : super(key: key);
+  UploadPhotoLocalStorage({Key? key}) : super(key: key);
 
   @override
   _UploadPhotoLocalStorageState createState() => _UploadPhotoLocalStorageState();
@@ -14,8 +15,8 @@ class UploadPhotoLocalStorage extends StatefulWidget {
 
 class _UploadPhotoLocalStorageState extends State<UploadPhotoLocalStorage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  List<File> imageStorage = new List<File>();
-  List<Asset> imagePicker = List<Asset>();
+  List<File> imageStorage = [];
+  List<Asset> imagePicker = [];
   String sError = 'No Error Dectected';
 
   bool isLoad = false;
@@ -161,7 +162,7 @@ class _UploadPhotoLocalStorageState extends State<UploadPhotoLocalStorage> {
   }
 
   Future<List<Asset>> loadAssets() async {
-    List<Asset> resultList = List<Asset>();
+    List<Asset> resultList = [];
 
     try {
       resultList = await MultiImagePicker.pickImages(
@@ -181,7 +182,7 @@ class _UploadPhotoLocalStorageState extends State<UploadPhotoLocalStorage> {
       sError = e.toString();
     }
 
-    if (!mounted) return null;
+    // if (!mounted) return null;
 
     setState(() {
       imagePicker = resultList;
@@ -204,7 +205,7 @@ class _UploadPhotoLocalStorageState extends State<UploadPhotoLocalStorage> {
     });
 
     Navigator.of(context).pop();
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text('Yay! Upload success!')));
+    _scaffoldKey.currentState!.showSnackBar(new SnackBar(content: new Text('Yay! Upload success!')));
 
   }
 

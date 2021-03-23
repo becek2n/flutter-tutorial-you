@@ -1,18 +1,18 @@
 import 'package:flutter/foundation.dart';
 
 class ApplicationTracerModel{
-  final String aplksNmbr;
-  final DateTime aplksCreateOn;
-  final DateTime aplksVrfyOn;
-  final DateTime aplksUwOn;
-  final DateTime aplksPolisOn;
-  final DateTime aplksPrintPolisPage1On;
-  final String cstmFullName;
-  final String prdcName;
-  final String aplksPolisNmbr;
-  final int aplksStatusId;
-  final InfoUnderwritingModel underwriting;
-  final List<InfoMonitoringModel> monitoring;
+  final String? aplksNmbr;
+  final DateTime? aplksCreateOn;
+  final DateTime? aplksVrfyOn;
+  final DateTime? aplksUwOn;
+  final DateTime? aplksPolisOn;
+  final DateTime? aplksPrintPolisPage1On;
+  final String? cstmFullName;
+  final String? prdcName;
+  final String? aplksPolisNmbr;
+  final int? aplksStatusId;
+  final InfoUnderwritingModel? underwriting;
+  final List<InfoMonitoringModel>? monitoring;
 
   ApplicationTracerModel({this.aplksNmbr, this.aplksCreateOn, this.aplksVrfyOn, this.aplksUwOn, this.aplksPolisOn,
     this.aplksPrintPolisPage1On, this.cstmFullName, this.prdcName, this.aplksPolisNmbr, this.aplksStatusId, this.underwriting, this.monitoring
@@ -41,12 +41,12 @@ class ApplicationTracerModel{
 }
 
 class InfoUnderwritingModel{
-  final String risknoteAplksNmbr;
-  final String risknoteFlag;
-  final String risknoteNote;
-  final DateTime risknoteDate;
-  final String createBy;
-  final DateTime createOn;
+  final String? risknoteAplksNmbr;
+  final String? risknoteFlag;
+  final String? risknoteNote;
+  final DateTime? risknoteDate;
+  final String? createBy;
+  final DateTime? createOn;
 
   InfoUnderwritingModel({this.risknoteAplksNmbr, this.risknoteFlag, this.risknoteNote, this.risknoteDate, this.createBy, this.createOn});
 
@@ -64,15 +64,15 @@ class InfoUnderwritingModel{
 }
 
 class InfoMonitoringModel{
-  final String dischl;
-  final String noapli;
-  final String nopsrt;
-  final String trccod;
-  final String trcdesc;
-  final DateTime tgltrc;
-  final String stats1;
-  final String createBy;
-  final DateTime createOn;
+  final String? dischl;
+  final String? noapli;
+  final String? nopsrt;
+  final String? trccod;
+  final String? trcdesc;
+  final DateTime? tgltrc;
+  final String? stats1;
+  final String? createBy;
+  final DateTime? createOn;
 
   InfoMonitoringModel({this.dischl, this.noapli, this.nopsrt, this.trccod, this.trcdesc, this.tgltrc, this.stats1, this.createBy, this.createOn});
 

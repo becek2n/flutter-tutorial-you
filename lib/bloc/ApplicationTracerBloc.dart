@@ -30,7 +30,7 @@ class ApplicationTracerBloc extends Bloc<ApplicationTracerEvent, ApplicationTrac
 abstract class ApplicationTracerEvent {}
 
 class GetApplicationDetailEvent extends ApplicationTracerEvent {
-  String noapli;
+  String? noapli;
 
   GetApplicationDetailEvent({this.noapli});
 }
@@ -38,7 +38,7 @@ class GetApplicationDetailEvent extends ApplicationTracerEvent {
 
 //state
 class ApplicationTracerState {
-  final ApplicationTracerModel application;
+  final ApplicationTracerModel? application;
 
   const ApplicationTracerState({this.application});
 

@@ -1,16 +1,15 @@
 import 'dart:convert';
+import 'package:tutorial_flutter/constants.dart';
 import 'package:tutorial_flutter/models/ResultModel.dart';
 import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
 import 'package:tutorial_flutter/services/ApiService.dart';
 
 
-class ApplicationTracerRepository{
-  // static final baseUrl = '192.168.102.95';
-  static final baseUrl = '172.20.10.2';
+class ProfileRepository{
 
-  static APIService<ApplicationTracerModel> getByNoApli(value){
+  static APIService<ApplicationTracerModel> getId(id){
     return APIService(
-      url: Uri.http(baseUrl, "/Takaful-API/WebsmartTracer/" + value),
+      url: Uri.http(baseAPIEcommerce, "/user/" + id),
       parse: (response){
         final parsed = json.decode(response.body);
         final dataJson = ResultModel.fromJSON(parsed);

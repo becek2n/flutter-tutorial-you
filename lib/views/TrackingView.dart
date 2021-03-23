@@ -4,7 +4,7 @@ import 'package:tutorial_flutter/bloc/ApplicationTracerBloc.dart';
 import 'package:tutorial_flutter/components/ApplicationTracerComponent.dart';
 
 class TrackingView extends StatefulWidget {
-  TrackingView({Key key}) : super(key: key);
+  TrackingView({Key? key}) : super(key: key);
 
   @override
   _TrackingViewState createState() => _TrackingViewState();

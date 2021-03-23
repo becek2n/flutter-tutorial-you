@@ -6,21 +6,21 @@ import 'package:tutorial_flutter/models/GalleryItemModel.dart';
 import 'package:tutorial_flutter/models/ProductModel.dart';
 
 class ProductDetailView extends StatefulWidget {
-  final ProductModel productModel;
-  ProductDetailView({Key key, this.productModel}) : super(key: key);
+  final ProductModel? productModel;
+  ProductDetailView({Key? key, this.productModel}) : super(key: key);
 
   @override
   _ProductDetailViewState createState() => _ProductDetailViewState();
 }
 
 class _ProductDetailViewState extends State<ProductDetailView> {
-  List<GalleryItemModel> galleries = new List<GalleryItemModel>();
+  List<GalleryItemModel> galleries = [];
   int _current = 0;
 
   @override
   void initState() { 
     super.initState();
-    widget.productModel.productImageModel.forEach((image) {
+    widget.productModel!.productImageModel!.forEach((image) {
       galleries.add(GalleryItemModel(id: image.id, resource: image.photo, assetType: 'url', description: '', isSVG: false));
     });
   }  
@@ -118,15 +118,15 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                       child: Divider(thickness: 3, color: Colors.grey),
                     ),
                     SizedBox(height: 20,),
-                    LableInfo(header: "Brand", name: widget.productModel.productBaseRelaionModel.brand.name),
+                    LableInfo(header: "Brand", name: widget.productModel!.productBaseRelaionModel!.brand!.name),
                     SizedBox(height: 10,),
-                    LableInfo(header: "Category", name: widget.productModel.productBaseRelaionModel.category.name),
+                    LableInfo(header: "Category", name: widget.productModel!.productBaseRelaionModel!.category!.name),
                     SizedBox(height: 10,),
-                    LableInfo(header: "Collection", name: widget.productModel.productBaseRelaionModel.collection.name),
+                    LableInfo(header: "Collection", name: widget.productModel!.productBaseRelaionModel!.collection!.name),
                     SizedBox(height: 10,),
-                    LableInfo(header: "Name", name: widget.productModel.name),
+                    LableInfo(header: "Name", name: widget.productModel!.name),
                     SizedBox(height: 10,),
-                    LableInfo(header: "Description", name: widget.productModel.description),
+                    LableInfo(header: "Description", name: widget.productModel!.description),
                   ],
                 ),
               ),
@@ -140,9 +140,9 @@ class _ProductDetailViewState extends State<ProductDetailView> {
 }
 
 class LableInfo extends StatelessWidget {
-  final String header;
-  final String name;
-  const LableInfo({Key key, this.header, this.name}) : super(key: key);
+  final String? header;
+  final String? name;
+  const LableInfo({Key? key, this.header, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -150,12 +150,12 @@ class LableInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(header, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(header!, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Padding(
             padding: EdgeInsets.all(10),
             child: Container(
               child: Text(
-                name
+                name!
               ),
             ),
           ),

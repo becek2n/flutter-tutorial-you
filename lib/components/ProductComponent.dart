@@ -7,13 +7,16 @@ import 'package:tutorial_flutter/models/ProductModel.dart';
 import 'package:tutorial_flutter/views/ProductDetailView.dart';
 
 class ProductComponent extends StatelessWidget {
-  const ProductComponent({Key key}) : super(key: key);
+  const ProductComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductBloc, ProductState>(
       listener: (BuildContext context, ProductState state){
-        if(state is LoadingProduct){
+        
+      },
+        builder: (context, state){
+          if(state is LoadingProduct){
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,8 +33,6 @@ class ProductComponent extends StatelessWidget {
               ]
           );
         }
-      },
-        builder: (context, state){
           if(state is ProductState){
             if(state.products == null){
               return Column(
@@ -40,7 +41,7 @@ class ProductComponent extends StatelessWidget {
                 ]
               ); 
             }else{
-              List<ProductModel> productModel = state.products;
+              List<ProductModel> productModel = state.products!;
               return GridView(
                 // shrinkWrap: true,
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 16),
@@ -84,7 +85,7 @@ class ProductComponent extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     image: new DecorationImage(
                                       fit: BoxFit.fill,
-                                      image: new NetworkImage(productModel[index].thumbnail.replaceAll("localhost:3001", baseAPIEcommerce)),
+                                      image: new NetworkImage(productModel[index].thumbnail!.replaceAll("localhost:3001", baseAPIEcommerce)),
                                     ),
                                     borderRadius: BorderRadius.all(Radius.circular(5)),
                                   ),
@@ -96,9 +97,9 @@ class ProductComponent extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(productModel[index].productBaseRelaionModel.brand.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                                    Text(productModel[index].productBaseRelaionModel!.brand!.name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                                     SizedBox(height:10),
-                                    Text(productModel[index].name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                                    Text(productModel[index].name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
                                     SizedBox(height:10),
                                     Text(r"$ " + productModel[index].price.toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
                                   ],

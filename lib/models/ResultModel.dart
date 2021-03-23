@@ -1,6 +1,6 @@
 class ResultModel{
-  final String responsecode;
-  final String responsemessage;
+  final String? responsecode;
+  final String? responsemessage;
   final dynamic responsedata;
 
   ResultModel({this.responsecode, this.responsemessage, this.responsedata});

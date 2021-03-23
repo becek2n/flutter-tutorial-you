@@ -11,3 +11,19 @@ class CircularLoading extends StatelessWidget {
     );
   }
 }
+
+void alertDialogCuprtino(BuildContext context, String sType){
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return new WillPopScope(
+          onWillPop: () async => false,
+          child: new CupertinoAlertDialog(
+        title: new Text(sType),
+        content: new CupertinoActivityIndicator(radius: 13.0),
+      ),
+      );
+    }
+  );
+}

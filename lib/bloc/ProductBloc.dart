@@ -15,7 +15,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         yield LoadingProduct();
         await Future.delayed(const Duration(seconds: 2));
         
-        final data = await APIWeb().load(ProductRepository.load('/product/category/' + event.name));
+        final data = await APIWeb().load(ProductRepository.load('product/category/' + event.name!));
 
         yield ProductState(products: data);
 
@@ -30,7 +30,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 abstract class ProductEvent {}
 
 class GetCategoryEvent extends ProductEvent {
-  String name;
+  String? name;
 
   GetCategoryEvent({this.name});
 }
@@ -38,7 +38,7 @@ class GetCategoryEvent extends ProductEvent {
 
 //state
 class ProductState {
-  final List<ProductModel> products;
+  final List<ProductModel>? products;
 
   const ProductState({this.products});
 

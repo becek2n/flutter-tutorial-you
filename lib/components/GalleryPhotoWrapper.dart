@@ -5,22 +5,22 @@ import 'package:photo_view/photo_view_gallery.dart';
 import 'package:tutorial_flutter/models/GalleryItemModel.dart';
 
 class GalleryPhotoWrapper extends StatefulWidget {
-  final LoadingBuilder loadingBuilder;
-  final Decoration backgroundDecoration;
+  final LoadingBuilder? loadingBuilder;
+  final Decoration? backgroundDecoration;
   final dynamic minScale;
   final dynamic maxScale;
   final int initalIndex;
   final PageController pageController;
-  final List<GalleryItemModel> galleries;
-  final Axis scrollDirection;
+  final List<GalleryItemModel>? galleries;
+  final Axis? scrollDirection;
 
 
-  GalleryPhotoWrapper({Key key,
+  GalleryPhotoWrapper({Key? key,
     this.loadingBuilder,
     this.backgroundDecoration,
     this.minScale,
     this.maxScale,
-    this.initalIndex,
+    required this.initalIndex,
     this.galleries,
     this.scrollDirection
   }) : pageController = PageController(initialPage: initalIndex);
@@ -32,7 +32,7 @@ class GalleryPhotoWrapper extends StatefulWidget {
 }
 
 class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper>{
-  int currentIndex;
+  late int currentIndex;
 
   @override
   void initState() {
@@ -61,16 +61,16 @@ class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper>{
           PhotoViewGallery.builder(
             scrollPhysics: const BouncingScrollPhysics(),
             builder: _buildItem,
-            itemCount: widget.galleries.length,
+            itemCount: widget.galleries!.length,
             loadingBuilder: widget.loadingBuilder,
-            backgroundDecoration: widget.backgroundDecoration,
+            backgroundDecoration: widget.backgroundDecoration as BoxDecoration?,
             pageController: widget.pageController,
             onPageChanged: onPageChanged,
-            scrollDirection: widget.scrollDirection,
+            scrollDirection: widget.scrollDirection!,
           ),
           Container(
             padding: const EdgeInsets.all(20.0),
-            child: Text(widget.galleries[currentIndex].description, 
+            child: Text(widget.galleries![currentIndex].description!, 
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 17.0,
@@ -84,13 +84,13 @@ class _GalleryPhotoWrapper extends State<GalleryPhotoWrapper>{
   }
 
   PhotoViewGalleryPageOptions _buildItem(BuildContext context, int index){
-    final GalleryItemModel item = widget.galleries[index];
+    final GalleryItemModel item = widget.galleries![index];
     return PhotoViewGalleryPageOptions(
-      imageProvider: (item.assetType == "url") ? NetworkImage(item.resource) : AssetImage(item.resource),
+      imageProvider: ((item.assetType == "url") ? NetworkImage(item.resource!) : AssetImage(item.resource!)) as ImageProvider<Object>?,
       initialScale: PhotoViewComputedScale.contained,
       minScale: PhotoViewComputedScale.contained * (0.5 + index / 10),
       maxScale: PhotoViewComputedScale.contained * 1.1,
-      heroAttributes: PhotoViewHeroAttributes(tag: item.id)
+      heroAttributes: PhotoViewHeroAttributes(tag: item.id!)
 
     );
   }

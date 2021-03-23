@@ -1,15 +1,15 @@
 class ProductModel{
-  final int id;
-  final int productBaseRelationId;
-  final String name;
-  final String description;
-  final double price;
-  final double discount;
-  final String thumbnail;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final List<ProductImageModel> productImageModel;
-  final ProductBaseRelaionModel productBaseRelaionModel;
+  final int? id;
+  final int? productBaseRelationId;
+  final String? name;
+  final String? description;
+  final double? price;
+  final double? discount;
+  final String? thumbnail;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final List<ProductImageModel>? productImageModel;
+  final ProductBaseRelaionModel? productBaseRelaionModel;
 
   ProductModel({this.id, this.productBaseRelationId, this.name, this.description, 
     this.price, this.discount, this.thumbnail, 
@@ -21,7 +21,7 @@ class ProductModel{
   //mapping json data
   factory ProductModel.fromJSON(Map<String, dynamic> jsonMap){
     
-    var price = double.parse(jsonMap["price"] ?? 0.0);
+    var price = double.parse(jsonMap["price"] ?? 0.0 as String);
     var discount = jsonMap["discount"] ?? 0.0;
     
     var images = jsonMap["ProductImages"] as List;
@@ -47,11 +47,11 @@ class ProductModel{
 }
 
 class ProductImageModel{
-  final int id;
-  final int productId;
-  final String photo;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final int? id;
+  final int? productId;
+  final String? photo;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   ProductImageModel({this.id, this.productId, this.photo, this.createdAt, this.updatedAt});
 
@@ -68,15 +68,15 @@ class ProductImageModel{
 }
 
 class ProductBaseRelaionModel{
-  final int id;
-  final int brandId;
-  final int categoryId;
-  final int collectionId;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final BrandModel brand;
-  final CategoryModel category;
-  final CollectionModel collection;
+  final int? id;
+  final int? brandId;
+  final int? categoryId;
+  final int? collectionId;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final BrandModel? brand;
+  final CategoryModel? category;
+  final CollectionModel? collection;
 
   ProductBaseRelaionModel({this.id, this.brandId, this.categoryId, this.collectionId, 
     this.createdAt, this.updatedAt, 
@@ -101,9 +101,9 @@ class ProductBaseRelaionModel{
 
 
 class BrandModel {
-  final int id;
-  final String name;
-  final String thumbnail;
+  final int? id;
+  final String? name;
+  final String? thumbnail;
 
   BrandModel({this.id, this.name, this.thumbnail});
 
@@ -118,8 +118,8 @@ class BrandModel {
 }
 
 class CategoryModel {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
   CategoryModel({this.id, this.name});
 
@@ -133,8 +133,8 @@ class CategoryModel {
 }
 
 class CollectionModel {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
 
   CollectionModel({this.id, this.name});
 

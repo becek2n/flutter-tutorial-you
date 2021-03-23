@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/models/CheckboxModel.dart';
 
 class CheckboxGroupView extends StatefulWidget {
-  CheckboxGroupView({Key key}) : super(key: key);
+  CheckboxGroupView({Key? key}) : super(key: key);
 
   @override
   _CheckboxGroupViewState createState() => _CheckboxGroupViewState();
 }
 
 class _CheckboxGroupViewState extends State<CheckboxGroupView> {
-  List<CheckboxModel> _dropdownAvailability = new List<CheckboxModel>();
-  bool _checkAll = false;
+  List<CheckboxModel> _dropdownAvailability = [];
+  bool? _checkAll = false;
   @override
   void initState() {
     _dropdownAvailability.addAll({
@@ -60,7 +60,7 @@ class _CheckboxGroupViewState extends State<CheckboxGroupView> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(_dropdownAvailability[index].name),
+                    Text(_dropdownAvailability[index].name!),
                     Icon(Icons.plus_one),
                   ],
                 ),
@@ -69,7 +69,7 @@ class _CheckboxGroupViewState extends State<CheckboxGroupView> {
                   setState(() {
                     _dropdownAvailability[index].selected = value;
 
-                    final check = _dropdownAvailability.every((element) => element.selected);
+                    final check = _dropdownAvailability.every((element) => element.selected!);
 
                     _checkAll = check;
                   });

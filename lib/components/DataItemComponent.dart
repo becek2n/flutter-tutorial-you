@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DetailItem extends StatelessWidget {
-  final String title;
-  final String value;
+  final String? title;
+  final String? value;
 
-  const DetailItem({Key key, this.title, this.value}) : super(key: key);
+  const DetailItem({Key? key, this.title, this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class DetailItem extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    child: Text(title),
+                    child: Text(title!),
                   ),
                 ),
                 Expanded(
