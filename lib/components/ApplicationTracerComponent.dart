@@ -88,7 +88,8 @@ class ApplicationTracerComponent extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                ApplicationTracerHistoryComponent(monitorings: application.monitoring!),
+                                Container(),
+                                // ApplicationTracerHistoryComponent(monitorings: application.monitoring!),
                               ],
                             ),
                           ),
