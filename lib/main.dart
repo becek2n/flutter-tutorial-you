@@ -43,8 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
       MenuModel(name: "Checkbox Group", view: CheckboxGroupView(), icon: Icon(Icons.check_box_outlined, size: 70,)),
       MenuModel(name: "Image Zoomable", view: GalleryPhotoZoomableView(), icon: Icon(Icons.image_search, size: 70)),
       // MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: 70)),
+      MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: 70)),
       MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
-      MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+      // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
       MenuModel(name: "BLOC Profile Update", view: ProfileView(), icon: Icon(Icons.person, size: 70)),
     });
     

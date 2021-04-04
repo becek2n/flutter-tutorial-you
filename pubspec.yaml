@@ -31,9 +31,9 @@ dependencies:
 
   flutter_bloc: ^7.0.0
   http: ^0.13.1
-  flutter_absolute_path: any
-  timelines: ^0.0.2+1
-
+  # flutter_absolute_path: any
+  # timelines: ^0.0.2+1
+  image_picker: ^0.7.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
