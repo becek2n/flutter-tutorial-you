@@ -30,16 +30,57 @@ class UserBloc extends  Bloc<UserEvent, UserState>{
         yield LoadingUser();
         await Future.delayed(const Duration(seconds: 1));
         dynamic formData;
+        if(event.id > 0){
+          formData = {
+            'id': event.id,
+            'firstName': event.firstName,
+            'lastName': event.lastName,
+          };
 
-        formData = {
-          'id': event.id,
-          'firstName': event.firstName,
-          'lastName': event.lastName,
-        };
+          await APIWeb().putFormData(UserRepository.update(formData, event.file));
+          yield SuccessSaveUser();        
 
-        await APIWeb().putFormData(UserRepository.update(formData, event.file));
+        }else{
+          formData = {
+            'id': event.id,
+            'firstName': event.firstName,
+            'lastName': event.lastName,
+            'email': event.email,
+          };
 
-        yield SuccessSaveUser();        
+          await APIWeb().postFormData(UserRepository.create(formData, event.file));
+          yield SuccessSaveUser();        
+
+        }
+        
+      }catch(ex){
+        yield FailureUser(ex.toString());
+      }
+    }
+
+    if(event is GetAllEvent){
+      try{
+        yield LoadingUser();
+        await Future.delayed(const Duration(seconds: 1));
+        
+        final data = await APIWeb().load(UserRepository.getAll(event.page, event.size, event.search));
+
+        yield UserState(users: data);
+
+      }catch(ex){
+        yield FailureUser(ex.toString());
+      }
+    }
+
+    if(event is  DeleteEvent){
+      try{
+        yield LoadingDeleteUser();
+        await Future.delayed(const Duration(seconds: 1));
+        
+        await APIWeb().delete(UserRepository.delete(event.id));
+
+        yield SuccessDeleteUser();
+
       }catch(ex){
         yield FailureUser(ex.toString());
       }
@@ -60,13 +101,29 @@ class SaveEvent extends UserEvent{
   String? firstName;
   String? lastName;
   File? file;
-  SaveEvent({required this.id, this.firstName, this.lastName, this.file});
+  String? email;
+  SaveEvent({required this.id, this.firstName, this.lastName, this.file, this.email});
+}
+
+class GetAllEvent extends UserEvent{
+  int page;
+  int size;
+  String? search;
+
+  GetAllEvent({required this.page, required this.size, this.search});
+}
+
+class DeleteEvent extends UserEvent{
+  int id;
+
+  DeleteEvent({required this.id});
 }
 
 //state
 class UserState{
   final UserModel? user;
-  const UserState({this.user});
+  final List<UserModel>? users;
+  const UserState({this.user, this.users});
 
   factory UserState.initial() => UserState();
 }
@@ -77,3 +134,5 @@ class FailureUser extends UserState {
   String error;
   FailureUser(this.error);
 }
+class LoadingDeleteUser extends UserState  {}
+class SuccessDeleteUser extends UserState  {}

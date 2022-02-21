@@ -13,7 +13,8 @@ import 'package:tutorial_flutter/constants.dart';
 import 'package:tutorial_flutter/models/UserModel.dart';
 
 class ProfileView extends StatefulWidget {
-  ProfileView({Key? key}) : super(key: key);
+  final int id;
+  ProfileView({Key? key, required this.id}) : super(key: key);
 
   @override
   _ProfileViewState createState() => _ProfileViewState();
@@ -31,15 +32,16 @@ class _ProfileViewState extends State<ProfileView> {
         elevation: 0.0,
       ),
       body: BlocProvider<UserBloc>(
-        create: (context) => UserBloc()..add(GetIdEvent(id: 1)),
-        child: ProfileDetail(),
+        create: (context) => UserBloc()..add(GetIdEvent(id: widget.id)),
+        child: ProfileDetail(id: widget.id),
       ) 
     );
   }
 }
 
 class ProfileDetail extends StatefulWidget {
-  ProfileDetail({Key? key}) : super(key: key);
+  final int id;
+  ProfileDetail({Key? key, required this.id}) : super(key: key);
 
   @override
   _ProfileDetailState createState() => _ProfileDetailState();
@@ -80,7 +82,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
                 child: Text("Close"),
                 onPressed: (){
                   Navigator.of(context, rootNavigator: true).pop();
-                  ctx.read<UserBloc>().add(GetIdEvent(id: 1));
+                  ctx.read<UserBloc>().add(GetIdEvent(id: widget.id));
                 },
               )
             ],
@@ -456,7 +458,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
                         onPressed: () async{
                           if (_formKey.currentState!.validate()) {
 
-                            context.read<UserBloc>().add(SaveEvent(id: 1, firstName: firstNameController.text.trim(), lastName: lastNameController.text.trim(), file: _image));
+                            context.read<UserBloc>().add(SaveEvent(id: widget.id, firstName: firstNameController.text.trim(), lastName: lastNameController.text.trim(), file: _image));
 
                           }else{
                             WidgetsBinding.instance!.addPostFrameCallback((_) => messageDialog(context, "Error", "Error validation"));

@@ -3,7 +3,8 @@ import 'package:tutorial_flutter/models/MenuModel.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 import 'package:tutorial_flutter/views/BlocProductView.dart';
-import 'package:tutorial_flutter/views/ProfileView.dart';
+import 'package:tutorial_flutter/views/Profile/ProfileListView.dart';
+import 'package:tutorial_flutter/views/Profile/ProfileView.dart';
 import 'package:tutorial_flutter/views/TrackingView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 void main() {
@@ -46,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
       MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: 70)),
       MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
       // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
-      MenuModel(name: "BLOC Profile Update", view: ProfileView(), icon: Icon(Icons.person, size: 70)),
+      MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: 70)),
+      MenuModel(name: "BLOC Profile CRUD & Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
     });
     
   }
