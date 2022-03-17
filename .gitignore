@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-*.lock
+.lock
 
 # IntelliJ related
 *.iml
