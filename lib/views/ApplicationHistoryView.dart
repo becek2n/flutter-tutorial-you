@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tutorial_flutter/bloc/ApplicationTracerBloc.dart';
-import 'package:tutorial_flutter/components/ApplicationTracerComponent.dart';
+import 'package:tutorial_flutter/bloc/ApplicationHistoryBloc.dart';
+import 'package:tutorial_flutter/components/ApplicationHistory/ApplicationTracerComponent.dart';
 
-class TrackingView extends StatefulWidget {
-  TrackingView({Key? key}) : super(key: key);
+class ApplicationHistoryView extends StatefulWidget {
+  ApplicationHistoryView({Key? key}) : super(key: key);
 
   @override
-  _TrackingViewState createState() => _TrackingViewState();
+  _ApplicationHistoryViewState createState() => _ApplicationHistoryViewState();
 }
 
-class _TrackingViewState extends State<TrackingView> {
+class _ApplicationHistoryViewState extends State<ApplicationHistoryView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
-import 'package:tutorial_flutter/repositories/ApplicationTracerRepository.dart';
+import 'package:tutorial_flutter/repositories/ApplicationHistoryRepository.dart';
 import 'package:tutorial_flutter/services/ApiService.dart';
 
 class ApplicationTracerBloc extends Bloc<ApplicationTracerEvent, ApplicationTracerState> {

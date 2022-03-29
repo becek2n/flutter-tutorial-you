@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tutorial_flutter/bloc/ApplicationTracerBloc.dart';
+import 'package:tutorial_flutter/bloc/ApplicationHistoryBloc.dart';
 import 'package:tutorial_flutter/components/CircularLoading.dart';
-import 'package:tutorial_flutter/components/DataItemComponent.dart';
+import 'package:tutorial_flutter/components/ApplicationHistory/DataItemComponent.dart';
 import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
-import 'package:tutorial_flutter/components/ApplcationTracerHistoryComponent.dart';
 
 class ApplicationTracerComponent extends StatelessWidget {
   const ApplicationTracerComponent({Key? key}) : super(key: key);
