@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tutorial_flutter/bloc/ApplicationHistoryBloc.dart';
+import 'package:tutorial_flutter/bloc/PaymentTracerBloc.dart';
 import 'package:tutorial_flutter/components/CircularLoading.dart';
 import 'package:tutorial_flutter/components/Tracking/Item.dart';
-import 'package:tutorial_flutter/models/ApplicationTracerModel.dart';
+import 'package:tutorial_flutter/models/PaymentTracerModel.dart';
 import 'package:tutorial_flutter/components/Tracking/Detail.dart';
 
 class TracerComponent extends StatelessWidget {
@@ -11,8 +11,8 @@ class TracerComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ApplicationTracerBloc, ApplicationTracerState>(
-      listener: (BuildContext context, ApplicationTracerState state){
+    return BlocConsumer<PaymentTracerBloc, PaymentTracerState>(
+      listener: (BuildContext context, PaymentTracerState state){
         
       },
         builder: (context, state){
@@ -23,7 +23,7 @@ class TracerComponent extends StatelessWidget {
               CircularLoading(),
             ]
           );
-        }else if(state is FailureProduct){
+        }else if(state is FailureTracer){
           return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -33,15 +33,15 @@ class TracerComponent extends StatelessWidget {
               ]
           );
         }
-          if(state is ApplicationTracerState){
-            if(state.application == null){
+          if(state is PaymentTracerState){
+            if(state.payment == null){
               return Column(
                 children: [
                   CircularLoading(),
                 ]
               ); 
             }else{
-              ApplicationTracerModel application = state.application!;
+              PaymentTracerModel payment = state.payment!;
               return ListView(
                 children: [
                   Column(
@@ -67,14 +67,11 @@ class TracerComponent extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                DetailItem(title: "No Aplikasi", value: application.aplksNmbr),
-                                DetailItem(title: "Nama Lengkap", value: application.cstmFullName),
-                                DetailItem(title: "Tgl Terima Aplikasi", value: application.aplksCreateOn == null ? "" : application.aplksCreateOn.toString()),
-                                DetailItem(title: "Tgl Input Aplikasi", value: application.aplksCreateOn == null ? "" : application.aplksCreateOn.toString()),
-                                DetailItem(title: "Tgl Input Premi", value: application.aplksCreateOn == null ? "" : application.aplksCreateOn.toString()),
-                                DetailItem(title: "Tgl Verifikasi Aplikasi", value: application.aplksVrfyOn == null ? "" : application.aplksVrfyOn.toString()),
-                                DetailItem(title: "Tgl Underwriting", value: application.underwriting == null ? "" : application.underwriting!.createOn.toString()),
-                                DetailItem(title: "Catatan Underwriting", value: application.underwriting == null ? "" : application.underwriting!.risknoteNote.toString()),
+                                DetailItem(title: "Payment ID", value: payment.id?.toString()),
+                                DetailItem(title: "Name", value: payment.customerName),
+                                DetailItem(title: "Address", value: payment.customerAddress),
+                                DetailItem(title: "Total Item", value: payment.totalItem?.toString()),
+                                DetailItem(title: "Total Amount", value: payment.amount?.toString()),
 
                               ],
                             ),
@@ -89,7 +86,7 @@ class TracerComponent extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(),
-                                // ApplicationTracerHistoryComponent(monitorings: application.monitoring!),
+                                // PaymentTracerHistoryComponent(monitorings: application.monitoring!),
                               ],
                             ),
                           ),

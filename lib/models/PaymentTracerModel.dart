@@ -1,92 +1,47 @@
-import 'package:flutter/foundation.dart';
-
 class PaymentTracerModel{
-  final String? aplksNmbr;
-  final DateTime? aplksCreateOn;
-  final DateTime? aplksVrfyOn;
-  final DateTime? aplksUwOn;
-  final DateTime? aplksPolisOn;
-  final DateTime? aplksPrintPolisPage1On;
-  final String? cstmFullName;
-  final String? prdcName;
-  final String? aplksPolisNmbr;
-  final int? aplksStatusId;
-  final InfoUnderwritingModel? underwriting;
-  final List<InfoMonitoringModel>? monitoring;
+  final int? id;
+  final String? customerName;
+  final String? customerAddress;
+  final int? totalItem;
+  final double? amount;
+  final List<OrderStatusModel>? orderStatuses;
 
-  PaymentTracerModel({this.aplksNmbr, this.aplksCreateOn, this.aplksVrfyOn, this.aplksUwOn, this.aplksPolisOn,
-    this.aplksPrintPolisPage1On, this.cstmFullName, this.prdcName, this.aplksPolisNmbr, this.aplksStatusId, this.underwriting, this.monitoring
-  });
+  PaymentTracerModel({this.id, this.customerName, this.customerAddress, this.totalItem, this.amount, this.orderStatuses});
 
   factory PaymentTracerModel.fromJSON(Map<String, dynamic> jsonMap){
     
-    var monitorings = jsonMap["monitoring"] as List;
-    List<InfoMonitoringModel> listMonitoring = monitorings.map((i) => InfoMonitoringModel.fromJSON(i)).toList();
+    var orders = jsonMap["orderStatuses"] as List;
+    List<OrderStatusModel> objOrderStatuses = orders.map((i) => OrderStatusModel.fromJSON(i)).toList();
     final data = PaymentTracerModel(
-      aplksNmbr: jsonMap["aplksNmbr"],
-      aplksCreateOn: DateTime.parse(jsonMap["aplksCreateOn"]),
-      aplksVrfyOn: DateTime.parse(jsonMap["aplksVrfyOn"]),
-      aplksUwOn: jsonMap["aplksUwOn"] != null ? DateTime.parse(jsonMap["aplksUwOn"]) : null,
-      aplksPolisOn: DateTime.parse(jsonMap["aplksPolisOn"]),
-      aplksPrintPolisPage1On: DateTime.parse(jsonMap["aplksPrintPolisPage1On"]),
-      cstmFullName: jsonMap["cstmFullName"],
-      prdcName: jsonMap["prdcName"],
-      aplksPolisNmbr: jsonMap["aplksPolisNmbr"],
-      aplksStatusId: jsonMap["aplksStatusId"],
-      underwriting: jsonMap["underwriting"] == null ? null : InfoUnderwritingModel.fromJSON(jsonMap["underwriting"]),
-      monitoring: listMonitoring
+      id: int.parse(jsonMap["id"].toString()),
+      customerName: jsonMap["customerName"],
+      customerAddress: jsonMap["customerAddress"],
+      totalItem: int.parse(jsonMap["totalItem"].toString()),
+      amount: double.parse(jsonMap["amount"].toString()),
+      orderStatuses: objOrderStatuses,
     );
     return data;
   }
 }
 
-class InfoUnderwritingModel{
-  final String? risknoteAplksNmbr;
-  final String? risknoteFlag;
-  final String? risknoteNote;
-  final DateTime? risknoteDate;
-  final String? createBy;
-  final DateTime? createOn;
+class OrderStatusModel{
+  final int? id;
+  final int? orderId;
+  final int? stepNumber;
+  final String? statusName;
+  final String? description;
+  final DateTime? dateCreated;
 
-  InfoUnderwritingModel({this.risknoteAplksNmbr, this.risknoteFlag, this.risknoteNote, this.risknoteDate, this.createBy, this.createOn});
+  OrderStatusModel({this.id, this.orderId, this.stepNumber, this.statusName, this.description, this.dateCreated});
 
-  factory InfoUnderwritingModel.fromJSON(Map<String, dynamic> jsonMap){
-    final data = InfoUnderwritingModel(
-      risknoteAplksNmbr: jsonMap["risknoteAplksNmbr"],
-      risknoteFlag: jsonMap["risknoteFlag"],
-      risknoteNote: jsonMap["risknoteNote"],
-      risknoteDate: DateTime.parse(jsonMap["risknoteDate"]),
-      createBy: jsonMap["createBy"],
-      createOn: DateTime.parse(jsonMap["createOn"]),
-    );
-    return data;
-  }
-}
-
-class InfoMonitoringModel{
-  final String? dischl;
-  final String? noapli;
-  final String? nopsrt;
-  final String? trccod;
-  final String? trcdesc;
-  final DateTime? tgltrc;
-  final String? stats1;
-  final String? createBy;
-  final DateTime? createOn;
-
-  InfoMonitoringModel({this.dischl, this.noapli, this.nopsrt, this.trccod, this.trcdesc, this.tgltrc, this.stats1, this.createBy, this.createOn});
-
-  factory InfoMonitoringModel.fromJSON(Map<String, dynamic> jsonMap){
-    final data = InfoMonitoringModel(
-      dischl: jsonMap["dischl"],
-      noapli: jsonMap["noapli"],
-      nopsrt: jsonMap["nopsrt"],
-      trccod: jsonMap["trccod"],
-      trcdesc: jsonMap["trcdesc"],
-      tgltrc: DateTime.parse(jsonMap["tgltrc"]),
-      stats1: jsonMap["stats1"],
-      createBy: jsonMap["createBy"],
-      createOn: DateTime.parse(jsonMap["createOn"]),
+  factory OrderStatusModel.fromJSON(Map<String, dynamic> jsonMap){
+    final data = OrderStatusModel(
+      id: int.parse(jsonMap["id"].toString()),
+      orderId: int.parse(jsonMap["orderId"].toString()),
+      stepNumber: int.parse(jsonMap["stepNumber"].toString()),
+      statusName: jsonMap["statusName"],
+      description: jsonMap["description"],
+      dateCreated: DateTime.parse(jsonMap["dateCreated"]),
     );
     return data;
   }

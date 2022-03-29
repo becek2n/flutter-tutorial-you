@@ -20,7 +20,7 @@ class PaymentTracerBloc extends Bloc<PaymentTracerEvent, PaymentTracerState> {
         yield PaymentTracerState(payment: data);
 
       }catch(e){
-        yield FailureProduct(e.toString());
+        yield FailureTracer(e.toString());
       }
     }
   }
@@ -45,10 +45,10 @@ class PaymentTracerState {
   factory PaymentTracerState.initial() => PaymentTracerState();
 }
 
-class FailureProduct extends PaymentTracerState {
+class FailureTracer extends PaymentTracerState {
   final String error;
 
-  FailureProduct(this.error);
+  FailureTracer(this.error);
 }
 
 class LoadingTracer extends PaymentTracerState {}

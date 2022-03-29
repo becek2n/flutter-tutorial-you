@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/models/MenuModel.dart';
+import 'package:tutorial_flutter/views/ApplicationHistoryView.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
 import 'package:tutorial_flutter/views/DeliveryTrackingView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
@@ -48,9 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: iconSize)),
       MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: iconSize)),
       MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
+      // MenuModel(name: "BLOC Application History ", view: ApplicationHistoryView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
       MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: iconSize)),
       MenuModel(name: "BLOC Profile CRUD Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
-      MenuModel(name: "BLOC Tracking Timeline ", view: DeliveryTrackingView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
+      MenuModel(name: "BLOC Delivery Tracer ", view: DeliveryTrackingView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
     });
     
   }

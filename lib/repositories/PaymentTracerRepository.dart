@@ -9,7 +9,7 @@ class PaymentTracerRepository{
 
   static APIService<PaymentTracerModel> getById(value){
     return APIService(
-      url: Uri.http(baseUrl, "/tutorial/deliverytracer/" + value),
+      url: Uri.http(baseUrl, "/tutorial/deliverytracer/" + value.toString()),
       parse: (response){
         final parsed = json.decode(response.body);
         final dataJson = ResultModel.fromJSON(parsed);
