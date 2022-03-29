@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_flutter/models/MenuModel.dart';
 import 'package:tutorial_flutter/views/CheckboxGroupView.dart';
+import 'package:tutorial_flutter/views/DeliveryTrackingView.dart';
 import 'package:tutorial_flutter/views/GalleryPhotoZoomableView.dart';
 import 'package:tutorial_flutter/views/BlocProductView.dart';
 import 'package:tutorial_flutter/views/Profile/ProfileListView.dart';
 import 'package:tutorial_flutter/views/Profile/ProfileView.dart';
-import 'package:tutorial_flutter/views/TrackingView.dart';
+// import 'package:tutorial_flutter/views/ApplicationHistoryView.dart';
 import 'package:tutorial_flutter/views/UploadPhotoLocalStorage.dart';
 void main() {
   runApp(MyApp());
@@ -40,15 +41,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() { 
     super.initState();
+    final iconSize = 50.0;
     menuModel.addAll({
-      MenuModel(name: "Checkbox Group", view: CheckboxGroupView(), icon: Icon(Icons.check_box_outlined, size: 70,)),
-      MenuModel(name: "Image Zoomable", view: GalleryPhotoZoomableView(), icon: Icon(Icons.image_search, size: 70)),
-      // MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: 70)),
-      MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: 70)),
-      MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
-      // MenuModel(name: "BLOC Tracking Timeline ", view: TrackingView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
-      MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: 70)),
-      MenuModel(name: "BLOC Profile CRUD & Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: 70)),
+      MenuModel(name: "Checkbox Group", view: CheckboxGroupView(), icon: Icon(Icons.check_box_outlined, size: iconSize,)),
+      MenuModel(name: "Image Zoomable", view: GalleryPhotoZoomableView(), icon: Icon(Icons.image_search, size: iconSize)),
+      // MenuModel(name: "Image Upload Local Storage", view: UploadPhotoLocalStorage(), icon: Icon(Icons.image_outlined, size: iconSize)),
+      MenuModel(name: "Image Upload Local Storage", view: null, icon: Icon(Icons.image_outlined, size: iconSize)),
+      MenuModel(name: "BLOC Fetch Complex JSON ", view: BlocProductView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
+      MenuModel(name: "BLOC Profile Update", view: ProfileView(id: 1), icon: Icon(Icons.person, size: iconSize)),
+      MenuModel(name: "BLOC Profile CRUD Pagination ", view: ProfileListView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
+      MenuModel(name: "BLOC Tracking Timeline ", view: DeliveryTrackingView(), icon: Icon(Icons.settings_applications_outlined, size: iconSize)),
     });
     
   }
@@ -105,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.only(top: 5, left: 30, right: 30, bottom: 5),
+                                padding: EdgeInsets.only(top: 5, left: 15.0, right: 15.0, bottom: 5),
                                 child: Container(
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
@@ -115,13 +117,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       SizedBox(height: 10,),
                                       Text("#" + (index + 1).toString(), 
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.orange)
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.orange)
                                       ),
-                                      Divider(thickness: 3,),
-                                      SizedBox(height: 10,),
+                                      Divider(thickness: 2.0,),
+                                      SizedBox(height: 5.0,),
                                       menuModel[index].icon!,
-                                      SizedBox(height: 20,),
-                                      Text(menuModel[index].name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                                      SizedBox(height: 10,),
+                                      Text(menuModel[index].name!, style: TextStyle(fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width * 0.03)),
                                     ],
                                   ) 
                                 ),
@@ -135,9 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  mainAxisSpacing: 20.0,
-                  crossAxisSpacing: 30.0,
-                  childAspectRatio: 0.7,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  childAspectRatio: MediaQuery.of(context).size.width * 0.0015,
                 ),
               ),
             )
