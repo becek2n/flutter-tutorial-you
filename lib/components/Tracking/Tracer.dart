@@ -86,7 +86,7 @@ class TracerComponent extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(),
-                                // PaymentTracerHistoryComponent(monitorings: application.monitoring!),
+                                Detail(orders: payment.orderStatuses!),
                               ],
                             ),
                           ),

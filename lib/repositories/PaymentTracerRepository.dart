@@ -5,7 +5,7 @@ import 'package:tutorial_flutter/services/ApiService.dart';
 
 
 class PaymentTracerRepository{
-  static final baseUrl = '192.168.95.2';
+  static final baseUrl = '192.168.102.231';//'192.168.95.2';
 
   static APIService<PaymentTracerModel> getById(value){
     return APIService(
